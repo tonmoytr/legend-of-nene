@@ -1,0 +1,475 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+.inter {
+  font-family: "Inter", sans-serif;
+}
+/* html {
+  cursor: url("./images/hs1.png"), pointer;
+}
+li a button div {
+  cursor: url("./images/hs1.png"), pointer !important;
+}
+.cu {
+  cursor: url("./images/hs1.png"), pointer !important;
+} */
+
+body {
+  font-family: "Luckiest Guy", cursive;
+  overflow-x: hidden;
+}
+.ts {
+  text-shadow: 0px 4px 5.6px 0px #000000 !important;
+}
+.Marquee {
+  overflow: hidden;
+  /* cursor: url("./images/hs1.png"), pointer !important; */
+}
+.marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  height: 250px;
+  overflow-x: hidden;
+  /* cursor: url("./images/hs1.png"), pointer !important; */
+
+  /* direction: ltr; */
+}
+.Marquee-content {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 8s linear infinite;
+  /* cursor: url("./images/hs1.png"), pointer !important; */
+}
+.Marquee-content:hover {
+  animation-play-state: paused;
+  /* cursor: url("./images/hs1.png"), pointer !important; */
+}
+.Marquee-tag {
+  /* width: 200px; */
+  margin: 0 0.5em;
+  padding: 0.5em;
+  /* background: rgba(255, 255, 255, 0.1); */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  cursor: url("./images/hs1.png"), pointer !important;
+}
+.Marquee-tag:hover {
+  /* background: rgba(255, 255, 255, 0.5); */
+  /* cursor: pointer; */
+  cursor: url("./images/hs1.png"), pointer !important;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.left {
+  left: 0px !important;
+}
+.bc {
+  border: 1px solid white;
+}
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .sooper {
+    right: -80px !important;
+    top: -80px !important;
+  }
+}
+@media (max-width: 768px) {
+  .gr {
+    background: #fff !important;
+  }
+  .tb {
+    color: black !important;
+  }
+  .bc {
+    border: 1px solid #000000;
+  }
+}
+/* 
+@media (min-width:1400px) and (max-width:1920px) {
+  .mtfix{
+    margin-top: 200px;
+  }
+} */
+
+.bghero {
+  background-image: linear-gradient(#5e0000cf, #580101c0),
+    url("./img/herobg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+}
+.bgwho {
+  background-image: linear-gradient(#00000051, #00000066),
+    url("./img/whobg.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.tokebg {
+  background-image: url("./img/tokblack.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.tokbg1 {
+  background-image: linear-gradient(#890404af, #890404a4),
+    url("./img/tokbg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: multiply;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.bghtb {
+  background-image: linear-gradient(#890404cf, #890404c0),
+    url("./img/htbbg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+}
+
+.post_bg {
+  background-image: linear-gradient(#890404cf, #890404c0),
+    url("./img/htbbg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 1300px) and (max-width: 1536px) {
+  .h__c {
+    max-width: 430px !important;
+  }
+  .h__c1 {
+    max-width: 490px !important;
+  }
+  .h__c2 {
+    max-width: 290px !important;
+  }
+  .jb {
+    justify-content: center !important;
+    max-width: 1200px !important;
+  }
+}
+/* Add these styles to your CSS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.h__c {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+.fade {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+.move-left-to-right {
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+}
+
+/* Add these styles to your CSS */
+.move-bottom-to-top {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.move-bottom-to-top.active {
+  transform: translateY(0); /* Move into original position */
+  opacity: 1; /* Make the image visible */
+}
+
+/*  */
+/*  */
+.rotate-right {
+  transition: transform 1s ease;
+}
+
+.rotate-left {
+  transition: transform 1s ease;
+}
+
+.rotate-right {
+  transform: rotate(50deg);
+}
+
+.rotate-left {
+  transform: rotate(-50deg);
+}
+/*  */
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: #fd0000 !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+  background: var(--swiper-pagination-bullet-inactive-color, #000);
+  opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2);
+}
+
+/*  */
+/*  */
+/*  */
+
+ul {
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 20px;
+}
+
+button {
+  position: relative;
+  background: rebeccapurple;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid white;
+  color: white;
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 50px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Style for the <a> element to match the button */
+.hover-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid white;
+  cursor: pointer;
+  padding: 0;
+  background-color: rebeccapurple;
+}
+
+.hover-link img {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+}
+
+.hover-button {
+  transition: transform 0.4s ease-out, z-index 0s, scale 0.4s ease-out;
+}
+.hover-button:hover {
+  transform: scale(1.15);
+  z-index: 10;
+}
+
+.supp {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center;
+}
+.supp:hover {
+  transform: scale(1.1); /* Adjust the scale factor as needed */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+}
+
+@media (min-width: 768px) {
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: var(--swiper-pagination-bottom, 8px);
+    top: var(--swiper-pagination-top, auto);
+    left: -210px !important;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .mxauto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .oc {
+    object-fit: cover;
+  }
+}
+
+.ttl {
+  font-size: 140px;
+  color: #fff;
+}
+.ttl2 {
+  font-size: 120px;
+  color: #fff;
+}
+.btn {
+  background-image: linear-gradient(to right, #ff0000 0%, #ff0000 100%);
+  border-radius: 40px;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-size: 28px;
+  height: 79px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 309px;
+  z-index: 2;
+  border: 5px solid #940000;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn span {
+  align-items: center;
+  background: #ff0000;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.btn:hover span {
+  background: transparent;
+}
+
+/* tokenomics button */
+span.btn2 {
+  text-align: center;
+  line-height: 2;
+  background-image: linear-gradient(to right, #ff0000 0%, #ff0000 100%);
+  border-radius: 40px;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-size: 28px;
+  height: 75px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 377px;
+  z-index: 2;
+  border: 5px solid #940000;
+}
+
+span.btn3 {
+  text-align: center;
+  line-height: 2;
+  background-image: linear-gradient(to right, #fff 0%, #fff 100%);
+  border-radius: 40px;
+  box-sizing: border-box;
+  color: #ff0000;
+  display: block;
+  font-size: 28px;
+  height: 75px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 377px;
+  z-index: 2;
+  border: 5px solid #940000;
+}
+.crd {
+  margin: 27px 12px;
+}
+@media screen and (max-width: 768px) {
+  span.btn2 {
+    text-align: center;
+    line-height: 2;
+    background-image: linear-gradient(to right, #ff0000 0%, #ff0000 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 28px;
+    height: 75px;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 2;
+    border: 5px solid #940000;
+  }
+
+  span.btn3 {
+    text-align: center;
+    line-height: 2;
+    background-image: linear-gradient(to right, #fff 0%, #fff 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #ff0000;
+    display: block;
+    font-size: 28px;
+    height: 75px;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 2;
+    border: 5px solid #940000;
+  }
+  .ttl2 {
+    font-size: 91px;
+    color: #fff;
+    padding-bottom: 30px;
+    line-height: 105px;
+  }
+  .ttl {
+    font-size: 94px;
+    color: #fff;
+  }
+}

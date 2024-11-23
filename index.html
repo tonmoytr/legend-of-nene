@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="/img/nene-m.jpg" type="image/x-icon" />
+    <!-- For Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- For Animation -->
+    <!-- Swiper JS -->
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <title>LEGEND OF NENE</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gallery-section {
+        padding: 50px;
+        background-color: #fd0000;
+        text-align: center;
+      }
+
+      .gallery-section h2 {
+        font-family: "Arial", sans-serif;
+        color: #ffffff;
+        font-size: 4rem;
+        margin-bottom: 30px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto; /* Fixed height */
+        object-fit: cover; /* Ensure images are cropped to fit */
+        object-position: center; /* Center the image content */
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 1024px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-section {
+          padding: 20px;
+        }
+
+        .gallery-section h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  -->
+    <!-- Hero -->
+    <div class="relative bghero">
+      <div class="px-4 md:pt-10 pt-5">
+        <div
+          class="bg-black pt-[6px] px-[6px] pb-[10px] container w-full mx-auto rounded-full"
+        >
+          <nav aria-label="Nav" class="bg-white w-full mx-auto rounded-full">
+            <div
+              class="flex justify-between items-center md:px-0 px-4 md:hidden md:py-0 py-4"
+            >
+              <div
+                aria-label="Logo"
+                class="lg:w-[170px] items-center justify-center w-[130px] md:hidden flex"
+              >
+                <img src="/img/token.png" alt="Logo" style="width: 70px" />
+              </div>
+              <div onclick="show();">
+                <svg
+                  class="md:hidden flex ml-auto my-2 relative z-50"
+                  width="48"
+                  height="49"
+                  viewBox="0 0 48 49"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24.5" r="24" fill="black" />
+                  <path
+                    d="M14.995 29.4993H32.995C33.2499 29.4995 33.495 29.5971 33.6804 29.7721C33.8657 29.9471 33.9772 30.1862 33.9922 30.4407C34.0071 30.6951 33.9243 30.9456 33.7607 31.1411C33.5971 31.3366 33.3651 31.4622 33.112 31.4923L32.995 31.4993H14.995C14.7401 31.499 14.495 31.4014 14.3096 31.2264C14.1243 31.0514 14.0128 30.8123 13.9978 30.5579C13.9829 30.3034 14.0657 30.0529 14.2293 29.8574C14.3928 29.662 14.6249 29.5364 14.878 29.5063L14.995 29.4993ZM14.995 23.4993L32.995 23.4973C33.2499 23.4976 33.495 23.5951 33.6804 23.7701C33.8657 23.9451 33.9772 24.1842 33.9922 24.4387C34.0071 24.6931 33.9243 24.9436 33.7607 25.1391C33.5971 25.3346 33.3651 25.4602 33.112 25.4903L32.995 25.4973L14.995 25.4993C14.7401 25.499 14.495 25.4014 14.3096 25.2264C14.1243 25.0515 14.0128 24.8123 13.9978 24.5579C13.9829 24.3034 14.0657 24.0529 14.2293 23.8574C14.3928 23.662 14.6249 23.5364 14.878 23.5063L14.995 23.4993ZM14.995 17.4993H32.995C33.2499 17.4996 33.495 17.5971 33.6804 17.7721C33.8657 17.9471 33.9772 18.1862 33.9922 18.4407C34.0071 18.6951 33.9243 18.9456 33.7607 19.1411C33.5971 19.3366 33.3651 19.4622 33.112 19.4923L32.995 19.4993H14.995C14.7401 19.499 14.495 19.4014 14.3096 19.2264C14.1243 19.0515 14.0128 18.8123 13.9978 18.5579C13.9829 18.3034 14.0657 18.0529 14.2293 17.8574C14.3928 17.662 14.6249 17.5364 14.878 17.5063L14.995 17.4993Z"
+                    fill="white"
+                  />
+                </svg>
+
+                <!-- <svg
+                  class="md:hidden flex ml-auto my-2 relative z-50"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#000"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 6l16 0" />
+                  <path d="M4 12l16 0" />
+                  <path d="M4 18l16 0" />
+                </svg> -->
+              </div>
+            </div>
+            <div
+              id="menu"
+              class="container mx-auto xl:px-10 px-4 2xl:py-4 py-4 justify-between gap-4 md:items-center flex md:relative fixed md:bg-transparent bg-black md:flex-row flex-col z-50 md:left-0 left-[-1000px]"
+            >
+              <div
+                aria-label="Logo"
+                class="lg:w-[170px] flex items-center justify-center w-[130px] md:flex hidden"
+              >
+                <img src="/img/token.png" alt="Logo" style="width: 70px" />
+              </div>
+              <div class="flex gap-3 items-center">
+                <ul class="flex gap-2 md:flex-row flex-col">
+                  <li
+                    class="cu px-1 supp1 py-2 md:text-black text-white text-lg font-normal capitalize leading-snug hover:text-opacity-50 transform duration-300 ease-in-out"
+                  >
+                    <a class="cu cyb" href="#who">ABOUT</a>
+                  </li>
+                  <li
+                    class="cu px-1 supp1 py-2 md:text-black text-white text-lg font-normal capitalize leading-snug hover:text-opacity-50 transform duration-300 ease-in-out"
+                  >
+                    <a class="cu cyb" href="#toke">TOkENOMICS</a>
+                  </li>
+                  <li
+                    class="cu px-1 supp1 py-2 md:text-black text-white text-lg font-normal capitalize leading-snug hover:text-opacity-50 transform duration-300 ease-in-out"
+                  >
+                    <a class="cu cyb" href="#htb">HOW TO BUY</a>
+                  </li>
+                  <li
+                    class="cu px-1 supp1 py-2 md:text-black text-white text-lg font-normal capitalize leading-snug hover:text-opacity-50 transform duration-300 ease-in-out"
+                  >
+                    <a class="cu cyb" href="#com">COMMUNITY</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- <div id="navbtns" class="cursor-pointer">
+                <img
+                  src="./img/token.png"
+                  alt="navbtn"
+                />
+              </div> -->
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!-- Hero -->
+      <div
+        class="container w-full mx-auto px-4 flex jb 2xl:justify-between justify-center items-center relative 2xl:pt-[110px] 2xl:pb-[110px] md:pt-16 md:pb-16 pt-8 lg:flex-nowrap flex-wrap"
+      >
+        <img
+          src="/img/hero.png"
+          alt="$NENE"
+          class="2xl:max-w-[850px] md:max-w-[410px] w-full clear-start lg:flex hidden absolute right-[150px] bottom-[-2px] z-50 h__c"
+        />
+        <!-- <img
+          src="https://trones.b-cdn.net/update/hero$NENE.png"
+          alt="$NENE"
+          class="2xl:max-w-[700px] md:max-w-[490px] w-full clear-start lg:flex hidden absolute right-0 bottom-0 h__c"
+        /> -->
+        <div class="2xl:max-w-[590px] md:max-w-[490px] w-full h__c1">
+          <h2 class="ttl">LEGEND OF NENE</h2>
+          <!-- <img
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="800"
+            src="https://trones.b-cdn.net/update/TRON DOGE.svg"
+            alt="Text"
+            class="2xl:w-[590px] md:w-[290px] w-[150px] h__c2 md:flex hidden"
+          />
+          <img
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="800"
+            src="https://trones.b-cdn.net/update/m-TRON DOGE.svg"
+            alt="Text"
+            class="md:hidden flex mx-auto"
+          /> -->
+          <div
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            class="text-opacity-80 text-white md:text-xl text-xs font-bold leading-loose md:my-4 my-2 inter md:text-left text-center"
+          >
+            Don't fade the LEGEND of $NENE!
+          </div>
+          <span
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            style="
+              font-size: 18px;
+              word-break: break-all;
+              color: #fff;
+              margin-bottom: 24px;
+              display: block;
+            "
+          >
+            CA : 7RVwnhX56GaYQcsxisJ7wCaMMnJam7TNjYiNm9tGpump
+          </span>
+          <div
+            id="navbtns1"
+            class="md:w-[280px] w-[280px] cursor-pointer mxauto"
+          >
+            <div>
+              <a class="btn" href="https://raydium.io/swap/?inputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R&outputMint=7RVwnhX56GaYQcsxisJ7wCaMMnJam7TNjYiNm9tGpump">
+                <span class="buy_btn">BUY $NENE</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-[650px] w-[250px]">
+          <!-- <img
+            src="https://trones.b-cdn.net/update/hero$NENE.png"
+            alt="$NENE"
+            class="w-full clear-start lg:hidden flex h__c_mobile"
+          /> -->
+          <img
+            src="/img/token.png"
+            alt="$NENE"
+            class="w-full clear-start lg:hidden flex h__c_mobile"
+          />
+        </div>
+      </div>
+      <!-- Hero -->
+    </div>
+    <!-- Brands -->
+    <div class="relative">
+      <div class="Marquee">
+        <div class="Marquee-content">
+          <div
+            class="flex justify-center md:gap-16 gap-4 items-center Marquee-tag bg-[#000000] 2xl:py-12 py-3 py16"
+          >
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- who -->
+    <div id="who" class="bgwho 2xl:pt-[195px] md:pt-24 pt-10 px-4 pb-3">
+      <h2
+        class="ttl2"
+        style="text-align: center"
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1200"
+      >
+        WHO IS $NENE?
+      </h2>
+      <!-- <img
+      
+        src="https://trones.b-cdn.net/update/WHO’s TRON DOGE_!.svg"
+        alt="whotext"
+        class="mx-auto mb-8"
+      /> -->
+      <div
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="800"
+        class="2xl:max-w-[800px] md:max-w-[700px] w-full bg-black pt-2 pl-2 pb-3 pr-3 rounded-[50px] mx-auto"
+      >
+        <div class="bg-white w-full md:px-14 px-4 py-16 rounded-[50px]">
+          <div
+            class="text-black 2xl:text-2xl md:text-lg text-sm font-semibold inter 2xl:leading-10 text-center"
+          >
+            LEGEND OF NENE" is the tale of an unstoppable meme bird soaring
+            through the crypto skies, dropping laughs, and collecting dreams.
+            Born from chaos, powered by vibes, and destined for legend. Fly high
+            with Nene—because ordinary is for the pigeons!
+          </div>
+        </div>
+      </div>
+      <div data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="800">
+        <div
+          class="move-left-to-right mx-auto 2xl:max-w-[700px] md:max-w-[500px] w-full 2xl:mt-[-100px] md:mt-[-100px]"
+        >
+          <img src="./img/abt.png" alt="" />
+          <!-- <video
+            width="500"
+            height="500"
+            autoplay=""
+            loop=""
+            muted=""
+            class="move-left-to-right mx-auto 2xl:max-w-[700px] md:max-w-[500px] w-full 2xl:mt-[-100px] md:mt-[-100px]"
+          >
+            <source src="/img/anim/love.webm" type="video/mp4" />
+            <source src="movie.ogg" type="video/ogg" />
+            Your browser does not support the video tag.
+          </video> -->
+        </div>
+      </div>
+    </div>
+    <!--  Tokenomics-->
+    <div id="toke" class="tokbg1">
+      <div class="tokebg md:py-[200px] py-[100px] relative top-[-5px]">
+        <h2
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="1000"
+          class="text-white 2xl:text-[190.85px] lg:text-[140px] text-5xl font-normal text-center"
+        >
+          TOKENOMICS
+        </h2>
+        <!-- <img
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="800"
+          src="https://trones.b-cdn.net/update/trond33.png"
+          alt="$NENE"
+          class="mx-auto 2xl:w-[500px] md:w-[400px] w-[200px] md:mt-[-300px] mt-[-100px] relative top-[-5px]"
+        /> -->
+        <!-- <img
+         
+          src="https://trones.b-cdn.net/update/tokkk.png"
+          alt="$NENE"
+         
+        /> -->
+        <div
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="800"
+          class="mx-auto 2xl:w-[500px] md:w-[400px] w-[200px] md:mt-[0px] mt-[-0px] absolute left-0 right-0 2xl:top-[280px] md:top-[384px] top-[120px]"
+        >
+          <img src="./img/token.png" alt="" />
+          <!-- <video
+            width="500"
+            height="500"
+            autoplay=""
+            loop=""
+            muted=""
+            class="move-left-to-right mx-auto 2xl:max-w-[700px] md:max-w-[500px] w-full 2xl:mt-[-100px] md:mt-[-100px]"
+          >
+            <source src="/img/anim/sig.webm" type="video/mp4" />
+            <source src="movie.ogg" type="video/ogg" />
+            Your browser does not support the video tag.
+          </video> -->
+        </div>
+      </div>
+
+      <div class="tokbg1 2xl:py-28 md:py-16 py-8">
+        <div
+          class="2xl:max-w-[1400px] md:max-w-[1100px] mx-auto w-full py-11 px-4"
+        >
+          <div
+            data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            class="bg-black pt-2 pl-2 pr-3 pb-3 w-full rounded-[50px]"
+          >
+            <div
+              class="bg-[#2C2827] w-full rounded-[50px] flex justify-center 2xl:gap-28 md:gap-16 gap-8 items-center py-11 md:flex-nowrap flex-wrap"
+            >
+              <!-- <div
+              class="md:w-[418px] w-[180px]"
+              data-aos="zoom-in"
+              data-aos-easing="linear"
+              data-aos-duration="1000"
+            >
+              <img
+                src="https://trones.b-cdn.net/update/graph.png"
+                alt="graph"
+                class="2xl:max-w-[418px] md:max-w-[350px] w-full rotate-on-scroll"
+              />
+            </div> -->
+              <div
+                class="md:w-[418px] w-[180px]"
+                data-aos="zoom-in"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+              >
+                <img src="./img/token2.png" alt="" />
+              </div>
+              <div class="md:w-[418px] w-[254px]">
+                <div class="w-full">
+                  <!-- <img
+                  src="https://trones.b-cdn.net/update/supplybtn.png"
+                  alt="supplybtn"
+                  class="w-full supp"
+                /> -->
+                  <span class="btn2"> 1B Supply </span>
+                </div>
+                <div class="w-full mt-4">
+                  <span class="btn3"> 0/0 TAX</span>
+                </div>
+                <div class="w-full mt-4">
+                  <span class="btn2"> CA RENOUNCED </span>
+                </div>
+                <div class="w-full mt-4">
+                  <span class="btn3"> 100% LP BURNT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  Tokenomics-->
+    </div>
+    <!-- latest post  -->
+
+    <!-- Brands -->
+    <div class="relative">
+      <div class="Marquee">
+        <div class="Marquee-content">
+          <div
+            class="flex justify-center md:gap-16 gap-4 items-center Marquee-tag bg-[#000000] 2xl:py-12 py-3 py16"
+          >
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-9 items-center">
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12.8572" r="12" fill="#FD0000" />
+              </svg>
+
+              <div class="w-[236px]">
+                <span class="text-white text-[46.91px] font-normal">$NENE</span
+                ><span class="text-white text-[46.91px] font-normal"> </span
+                ><span class="text-white text-[46.91px] font-normal"
+                  >| NENE</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- HTB -->
+    <div id="htb" class="bghtb pt-16 pb-10">
+      <div class="md:max-w-[1400px] w-full mx-auto md:px-20 px-2">
+        <div
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="1000"
+          class="w-full bg-black pt-2 pl-2 pr-3 pb-3 rounded-[50px]"
+        >
+          <div class="bg-white w-full rounded-[50px] px-4 lg:py-6 py-6">
+            <h2
+              class="text-black 2xl:text-8xl md:text-6xl text-3xl font-normal text-center"
+            >
+              HOW TO BUY?
+            </h2>
+          </div>
+        </div>
+        <div
+          class="pt-5 flex gap-5 lg:flex-nowrap flex-wrap w-full lg:justify-between justify-center"
+        >
+          <div
+            data-aos="fade-right"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            class="md:max-w-[700px] w-full bg-black rounded-[50px] pt-2 pl-2 pr-3 pb-3"
+          >
+            <div class="bg-white w-full pt-10 rounded-[50px] 2xl:pt-20">
+              <div class="swiper mySwiper_carousel_15">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide pb-44">
+                    <div
+                      class="text-black text-[32px] font-normal lg:px-16 px-4"
+                    >
+                      STEP 1:
+                    </div>
+                    <div class="md:h-[350px] h-[200px]">
+                      <div
+                        class="lg:px-16 px-4 text-[#fd0000] 2xl:text-[60px] md:text-5xl text-3xl font-normal 2xl:mt-4 mt-2 2xl:leading-[64px]"
+                      >
+                        DOWNLOAD<br />PHANTOM WALLET
+                      </div>
+                      <div
+                        class="lg:px-16 px-4 text-[#0e0e0e] md:text-2xl tex-sm font-normal inter 2xl:mt-4 mt-2 md:leading-10"
+                      >
+                        Create a wallet with phantom: Visit
+                        <b>phantom.app</b> and follow the steps to create a new
+                        account.
+                      </div>
+                    </div>
+                    <!-- md:bottom-[-80px] bottom-[-50px] -->
+                    <img
+                      src="/img/phantom.png"
+                      alt="h4"
+                      class="absolute right-0 md:w-[290px] w-[200px] bottom-0"
+                    />
+                  </div>
+                  <div class="swiper-slide pb-44">
+                    <div
+                      class="text-black text-[32px] font-normal lg:px-16 px-4"
+                    >
+                      STEP 2:
+                    </div>
+                    <div class="md:h-[350px] h-[200px]">
+                      <div
+                        class="lg:px-16 px-4 text-[#fd0000] 2xl:text-[60px] md:text-5xl text-3xl font-normal 2xl:mt-4 mt-2 2xl:leading-[64px]"
+                      >
+                        GET SOME SOL
+                      </div>
+                      <div
+                        class="lg:px-16 px-4 text-[#0e0e0e] md:text-2xl tex-sm font-normal inter 2xl:mt-4 mt-2 md:leading-10"
+                      >
+                        Purchase SOL tokens and send them to your Phantom
+                        wallet.
+                      </div>
+                    </div>
+                    <!-- md:bottom-[-110px] bottom-[-60px] -->
+                    <img
+                      src="/img/solana.png"
+                      alt="h4"
+                      class="absolute right-0 bottom-0 md:w-[220px] w-[150px]"
+                    />
+                  </div>
+                  <div class="swiper-slide pb-44">
+                    <div
+                      class="text-black text-[32px] font-normal lg:px-16 px-4"
+                    >
+                      STEP 3:
+                    </div>
+                    <div class="md:h-[350px] h-[200px]">
+                      <div
+                        class="lg:px-16 px-4 text-[#fd0000] 2xl:text-[60px] md:text-5xl text-3xl font-normal 2xl:mt-4 mt-2 2xl:leading-[64px]"
+                      >
+                        GO TO RAYDIUM
+                      </div>
+                      <div
+                        class="lg:px-16 px-4 text-[#0e0e0e] md:text-2xl tex-sm font-normal inter 2xl:mt-4 mt-2 md:leading-10"
+                      >
+                        Headover to Raydium, connect your funded wallet and
+                        paste the $NENE contract address.....
+                      </div>
+                    </div>
+                    <img
+                      src="/img/ray.png"
+                      alt="h4"
+                      class="absolute right-0 bottom-[0px] lg:w-[200px] w-[200px]"
+                    />
+                  </div>
+                  <div class="swiper-slide pb-44">
+                    <div
+                      class="text-black text-[32px] font-normal lg:px-16 px-4"
+                    >
+                      STEP 4:
+                    </div>
+                    <div class="md:h-[350px] h-[200px]">
+                      <div
+                        class="lg:px-16 px-4 text-[#fd0000] 2xl:text-[60px] md:text-5xl text-3xl font-normal 2xl:mt-4 mt-2 2xl:leading-[64px]"
+                      >
+                        BUY $NENE <br />
+                        TOKENS
+                      </div>
+                    </div>
+                    <!-- <img src="./img/hwt.png" alt=""> -->
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+          <div class="md:max-w-[600px] w-full">
+            <div
+              data-aos="fade-left"
+              data-aos-easing="linear"
+              data-aos-duration="1000"
+              class="md:max-w-[600px] w-full bg-black rounded-[50px] pt-2 pl-2 pr-3 pb-3 relative mb-5"
+            >
+              <!-- <img src="./img/hwt.png" alt=""> -->
+
+              <div
+                class="bg-[#1C1C1C] w-full lg:px-16 2xl:py-20 px-4 py-10 rounded-[50px]"
+              >
+                <div class="text-white text-5xl font-normal">$NENE</div>
+                <div
+                  class="mt-8 text-white text-xl inter font-normal w-[250px]"
+                >
+                  Get your bag ready, because it’s time to take $NENE to the
+                  moon and beyond! Don't miss out on joining us for this wild
+                  ride into the next chapter of innovation. !
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <a class="btn" href="https://raydium.io/swap/?inputMint=4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R&outputMint=7RVwnhX56GaYQcsxisJ7wCaMMnJam7TNjYiNm9tGpump">
+                <span class="buy_btn">BUY $NENE</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- <img
+          src="https://trones.b-cdn.net/update/htb$NENE.png"
+          alt="$NENE"
+          class="mx-auto 2xl:max-w-[900px] md:max-w-[700px] w-full lg:mt-[-20px] relative z-[60]"
+        /> -->
+      </div>
+    </div>
+    <!-- HTB -->
+    <div id="com" class="relative h-full z-[1000] bg-black">
+      <img
+        src="./img/hwt.png"
+        class="absolute right-10 bottom-0 lg:w-[490px] md:w-[350px] w-[250px] z-0 md:flex hidden"
+        alt=""
+      />
+      <!-- <video
+        width="500"
+        height="500"
+        autoplay=""
+        loop=""
+        muted=""
+        class="absolute right-10 bottom-0 lg:w-[490px] md:w-[350px] w-[250px] z-0 md:flex hidden"
+      >
+        <source src="/img/anim/scratching.webm" type="video/mp4" />
+        <source src="movie.ogg" type="video/ogg" />
+        Your browser does not support the video tag.
+      </video> -->
+
+      <div class="lg:py-16 py-8 container mx-auto">
+        <h2 class="2xl:text-5xl md:text-4xl text-3xl text-[#FD0000] bts px-4">
+          JOIN THE COMMUNITY
+        </h2>
+        <div class="mt-8 flex gap-3 px-4 items-center">
+          <a href="https://dexscreener.com/solana/7RVwnhX56GaYQcsxisJ7wCaMMnJam7TNjYiNm9tGpump" target="_blank">
+            <img src="/img/dex.png" style="width: 40px" alt="dexscreener" />
+          </a>
+          <a href="https://t.me/legendofnene" target="_blank">
+            <img style="width: 30px" src="./img/tg.png" alt="telegram" />
+          </a>
+          <a href="https://x.com/LegendOfNene" target="_blank">
+            <img style="width: 30px" src="./img/tt.png" alt="twitter" />
+          </a>
+          <!-- <p class="text-white lg:text-2xl text-base">@TRONDOGE</p> -->
+        </div>
+        <p class="text-white md:text-base text-sm md:mt-24 mt-10 px-4">
+          © 2024 ALl Rights Reserved | LEGEND OF NENE
+        </p>
+      </div>
+
+      <img src="./img/foot.png" alt="" />
+    </div>
+    <div class="bg-[#FD0000] md:py-6 py-4 relative z-20"></div>
+
+    <section>
+      <div class="gallery-section">
+        <h2 style="font-family: 'Luckiest Guy';"
+              class="text-black 2xl:text-8xl md:text-6xl text-3xl font-normal text-center"
+            >
+              NENE GALLERY
+            </h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="./img/nene-l.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/nene-m.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme2.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme3.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme4.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme55.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme6.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme7.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme8.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/mmeem11.jpg" alt="Image 1" /></div>
+          <div class="gallery-item"><img src="./img/meme10.jpg" alt="Image 1" /></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      var swiper = new Swiper(".mySwiper_carousel_15", {
+        loop: true,
+        //     autoplay: {
+        //   delay: 2000,
+        // },
+        speed: 1000,
+        grabCursor: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: "1",
+            // spaceBetween: 16,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: "1",
+            // spaceBetween: 16,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: "1",
+            // spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: "1",
+            // spaceBetween: 32,
+          },
+          1336: {
+            slidesPerView: "1",
+            // spaceBetween: 32,
+          },
+        },
+      });
+    </script>
+    <script>
+      function show() {
+        document.getElementById("menu").classList.toggle("left");
+      }
+    </script>
+    <script>
+      let copyText = document.querySelector(".copy-text");
+      copyText.querySelector("button").addEventListener("click", function () {
+        let input = copyText.querySelector("input.text");
+        input.select();
+        document.execCommand("copy");
+        copyText.classList.add("active");
+        window.getSelection().removeAllRanges();
+        setTimeout(function () {
+          copyText.classList.remove("active");
+        }, 2500);
+      });
+    </script>
+    <script>
+      document.addEventListener("scroll", () => {
+        const image = document.querySelector(".h__c");
+        const scrollPosition = window.scrollY;
+        image.style.transform = `translateX(${scrollPosition * 0.5}px)`;
+      });
+    </script>
+    <!-- Mobile -->
+    <script>
+      document.addEventListener("scroll", () => {
+        const image = document.querySelector(".h__c_mobile");
+        const scrollPosition = window.scrollY;
+        image.style.transform = `translateX(${scrollPosition * 0.5}px)`;
+      });
+    </script>
+    <script>
+      let lastScrollTop = window.scrollY;
+
+      document.addEventListener("scroll", () => {
+        const image = document.querySelector(".move-left-to-right");
+        const currentScrollTop = window.scrollY;
+        if (currentScrollTop > lastScrollTop) {
+          image.style.transform = `translateX(100px)`;
+        } else {
+          image.style.transform = `translateX(-100px)`;
+        }
+
+        lastScrollTop = currentScrollTop;
+      });
+    </script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const image = document.querySelector(
+          'img[src="https://trones.b-cdn.net/update/graph.png"]'
+        );
+        let lastScrollTop = 0;
+
+        window.addEventListener("scroll", function () {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            image.classList.remove("rotate-left");
+            image.classList.add("rotate-right");
+          } else {
+            // Scrolling up
+            image.classList.remove("rotate-right");
+            image.classList.add("rotate-left");
+          }
+
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+      });
+    </script>
+    <script>
+      class HoverButton {
+        constructor(el) {
+          this.el = el;
+          this.hover = false;
+          this.calculatePosition();
+          this.attachEventsListener();
+        }
+
+        attachEventsListener() {
+          window.addEventListener("mousemove", (e) => this.onMouseMove(e));
+          window.addEventListener("resize", () => this.calculatePosition());
+        }
+
+        calculatePosition() {
+          this.el.style.transform = "translate(0px, 0px) scale(1)";
+          this.el.style.transition =
+            "transform 0.4s ease-out, z-index 0s, transform 0.4s ease-out";
+          const box = this.el.getBoundingClientRect();
+          this.x = box.left + box.width * 0.5;
+          this.y = box.top + box.height * 0.5;
+          this.width = box.width;
+          this.height = box.height;
+        }
+
+        onMouseMove(e) {
+          let hover = false;
+          let hoverArea = this.hover ? 0.7 : 0.5;
+          let x = e.clientX - this.x;
+          let y = e.clientY - this.y;
+          let distance = Math.sqrt(x * x + y * y);
+          if (distance < this.width * hoverArea) {
+            hover = true;
+            if (!this.hover) {
+              this.hover = true;
+            }
+            this.onHover(x, y);
+          }
+
+          if (!hover && this.hover) {
+            this.onLeave();
+            this.hover = false;
+          }
+        }
+
+        onHover(x, y) {
+          this.el.style.transform = `translate(${x * 0.4}px, ${
+            y * 0.4
+          }px) scale(1.15)`;
+          this.el.style.zIndex = "10";
+        }
+
+        onLeave() {
+          this.el.style.transform = "translate(0px, 0px) scale(1)";
+          this.el.style.transition =
+            "transform 0.7s cubic-bezier(0.25, 1.25, 0.5, 1.25)";
+          this.el.style.zIndex = "1";
+        }
+      }
+
+      // Instantiate the HoverButton class for elements by id
+      const btn = document.getElementById("navbtns");
+      if (btn) new HoverButton(btn);
+
+      const btn1 = document.getElementById("navbtns1");
+      if (btn1) new HoverButton(btn1);
+      const btn2 = document.getElementById("navbtns2");
+      if (btn2) new HoverButton(btn2);
+      const btn3 = document.getElementById("navbtns3");
+      if (btn3) new HoverButton(btn3);
+      const btn4 = document.getElementById("navbtns4");
+      if (btn4) new HoverButton(btn4);
+      const btn5 = document.getElementById("navbtns5");
+      if (btn5) new HoverButton(btn5);
+    </script>
+    <script>
+      document.querySelectorAll(".supp").forEach((img) => {
+        img.addEventListener("mousemove", (e) => {
+          const { offsetX: x, offsetY: y, target } = e;
+          const { offsetWidth: width, offsetHeight: height } = target;
+
+          const scale = 1.2;
+          const maxOffset = 20;
+
+          const offsetX = (x / width - 0.5) * maxOffset * 2;
+          const offsetY = (y / height - 0.5) * maxOffset * 2;
+
+          target.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+        });
+
+        img.addEventListener("mouseleave", (e) => {
+          e.target.style.transform = "scale(1) translate(0, 0)";
+        });
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".supp1").forEach((img) => {
+        img.addEventListener("mousemove", (e) => {
+          const { offsetX: x, offsetY: y, target } = e;
+          const { offsetWidth: width, offsetHeight: height } = target;
+
+          const scale = 1;
+          const maxOffset = 20;
+
+          const offsetX = (x / width - 0.5) * maxOffset * 2;
+          const offsetY = (y / height - 0.5) * maxOffset * 2;
+
+          target.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+        });
+
+        img.addEventListener("mouseleave", (e) => {
+          e.target.style.transform = "scale(1) translate(0, 0)";
+        });
+      });
+    </script>
+  </body>
+</html>
